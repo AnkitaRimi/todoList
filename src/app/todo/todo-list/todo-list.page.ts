@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Todo, TodoServiceService } from 'src/app/services/todo-service.service';
 
 @Component({
@@ -6,7 +7,9 @@ import { Todo, TodoServiceService } from 'src/app/services/todo-service.service'
   templateUrl: './todo-list.page.html',
   styleUrls: ['./todo-list.page.scss'],
 })
-export class TodoListPage implements OnInit {
+export class TodoListPage implements OnInit,OnDestroy {
+  private getTodo$:Subscription;
+  public todoList:Todo[]=[];
 
   constructor(private commonService: TodoServiceService) { }
 
@@ -15,14 +18,22 @@ export class TodoListPage implements OnInit {
   }
 
   public addtodo(){
-    let todo :Todo={'taskName':'Biye kora','details':'Korbo toh obossoi !'}; 
+    let todo :Todo={'taskName':'Ghurte Jabo','details':'jabo toh obossoi !'}; 
       this.commonService.addTodo(todo)
   }
 
   public getTodos() {
-    this.commonService.getTodoList().subscribe((res: Todo[]) => {
+   this.getTodo$= this.commonService.getTodoList().subscribe((res: Todo[]) => {
+    this.todoList=res;
       console.log("getting Todos", res);
 
     })
+  }
+  ngOnDestroy(){
+    console.log("destroy called");
+    
+    if(this.getTodo$){
+      this.getTodo$.unsubscribe()
+    }
   }
 }

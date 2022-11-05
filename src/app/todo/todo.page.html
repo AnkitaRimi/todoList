@@ -1,16 +1,41 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>todo</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
-  <ion-buttons>
-    <ion-button routerLink="todo-list">List Page</ion-button>
-    <ion-button>Add Page</ion-button>
-    <ion-button>Details Page</ion-button>
-  </ion-buttons>
+  <!-- <ion-buttons>
+    <ion-button routerLink="todo-list">List</ion-button>
+    <ion-button routerLink="todo-add">Add</ion-button>
+    <ion-button routerLink="todo-details">Details</ion-button>
+  </ion-buttons> -->
   <router-outlet></router-outlet>
 
   
 </ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="todo-list">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>List Page</ion-label>
+      <ion-badge color="warning">{{todoList.length}}</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="todo-add">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Add Page</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="todo-details">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>Details Page</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

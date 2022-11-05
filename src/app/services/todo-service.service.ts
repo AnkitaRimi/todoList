@@ -14,6 +14,7 @@ export class TodoServiceService {
   // Input Output==> Parent Child
   // Localstorage
   // Subject / Behavious Subject (update+ previous value send kore)
+  //reply subject 
 
   public todoList = new BehaviorSubject<Todo[]>([]);
   constructor() { }
@@ -24,7 +25,7 @@ export class TodoServiceService {
   addTodo(todo:Todo){
     // get pervious
     let getPrev:Todo[] = this.todoList.getValue();
-    // add new with previous
+    // add new with previous======= behaviour subject
     let newTodoList = [...getPrev,todo ]
     // update todo
     this.todoList.next(newTodoList);

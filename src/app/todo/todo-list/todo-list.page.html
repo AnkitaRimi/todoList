@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>todo-list</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [pageTitle]="'Todo List'"></app-header>
 
 <ion-content>
+  <div *ngIf="todoList.length>0">
+  <!-- <ion-card>
+    <ion-text>
+      <h3>Title</h3>
+      <h3>Description</h3>
+    </ion-text>
+  </ion-card> -->
+  <ion-card *ngFor="let todo of todoList">
+    <p>{{todo.taskName}}</p>
+    <p>{{todo.details}}</p>
+  </ion-card>
+</div>
 <ion-button (click)="addtodo()">Add Todos</ion-button>
 </ion-content>

@@ -1,9 +1,54 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>todo-add</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+<app-header [pageTitle]="'Add Todo'"></app-header>
 
 <ion-content>
+  <div>
+    <form [formGroup]="todoform" (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Todo Title</ion-label>
+          <ion-input type="text" formControlName="title"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Todo Description</ion-label>
+          <ion-input type="text" formControlName="desc"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Todo priority</ion-label>
+          <ion-select formControlName="priority">
+            <ion-select-option [value]="option.id" *ngFor="let option of priorityArray">
+              {{option.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Target Date</ion-label>
+          <ion-input type="date" formControlName="target_Date"></ion-input>
+        </ion-item>
+        <ion-button size="block" type="submit" color="success" >Submit</ion-button>
+      </ion-list>
+    </form>
+  </div>
+  <!-- <ion-card>
+     <ion-card-content class="ion-no-padding"> 
+      <ion-list>
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Todo Title</ion-label>
+          <ion-input type="text" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item counter="true">
+          <ion-label position="floating">Todo Description</ion-label>
+          <ion-textarea type="text" maxlength="20" [rows]="5" [(ngModel)]="desc"></ion-textarea >
+        </ion-item>
+        
+          <ion-button size="block" color="success" (click)="addtodo()">Submit</ion-button>
+        
+      </ion-list>
+    </ion-card-content> 
+  </ion-card> -->
 
 </ion-content>
