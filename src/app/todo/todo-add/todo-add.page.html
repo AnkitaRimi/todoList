@@ -13,10 +13,37 @@
           <ion-label position="floating">Todo Title</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
         </ion-item>
+        <div
+          *ngIf="!title?.valid && (title?.dirty ||title?.touched)">
+          <div [hidden]="!title.errors.required" class="errorTxt">
+            Title is required
+          </div>
+          <div [hidden]="!title.errors.minlength" class="errorTxt">
+            Min Length is 10
+          </div>
+        </div>
+        <!-- <div formGroupName="address">
+          <ion-item class="ion-margin-bottom">
+            <ion-label position="floating">Todo Title</ion-label>
+            <ion-input type="text" formControlName="city"></ion-input>
+          </ion-item>
+        </div> -->
         <ion-item class="ion-margin-bottom">
           <ion-label position="floating">Todo Description</ion-label>
           <ion-input type="text" formControlName="desc"></ion-input>
         </ion-item>
+        <div
+          *ngIf="!desc?.valid && (desc?.dirty ||desc?.touched)">
+          <div [hidden]="!desc.errors.required" class="errorTxt">
+           Description is required
+          </div>
+          <div [hidden]="!desc.errors.minlength" class="errorTxt">
+            Min Length is 10
+          </div>
+          <div [hidden]="!desc.errors.maxlength" class="errorTxt">
+            Max Length is 30
+          </div>
+        </div>
         <ion-item class="ion-margin-bottom">
           <ion-label position="floating">Todo priority</ion-label>
           <ion-select formControlName="priority">
@@ -29,6 +56,12 @@
           <ion-label position="floating">Target Date</ion-label>
           <ion-input type="date" formControlName="target_Date"></ion-input>
         </ion-item>
+        <div
+          *ngIf="!target_Date?.valid && (target_Date?.dirty ||target_Date?.touched)">
+          <div [hidden]="!target_Date.errors.required" class="errorTxt">
+            Date Name is required
+          </div>
+        </div>
         <ion-button size="block" type="submit" color="success" >Submit</ion-button>
       </ion-list>
     </form>

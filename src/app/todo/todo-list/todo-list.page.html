@@ -9,9 +9,9 @@
     </ion-text>
   </ion-card> -->
   <ion-card *ngFor="let todo of todoList">
-    <p>{{todo.taskName}}</p>
-    <p>{{todo.details}}</p>
+    <p>{{todo.title}}</p>
+    <p>{{todo.desc}}</p>
   </ion-card>
 </div>
-<ion-button (click)="addtodo()">Add Todos</ion-button>
+
 </ion-content>

@@ -1,0 +1,41 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>log-in</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">UserName</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <div *ngIf="!name?.valid && (name?.dirty ||name?.touched)">
+          <div [hidden]="!name.errors.required" class="errorTxt">
+            Name is required
+          </div>
+          <div [hidden]="!name.errors.minlength" class="errorTxt">
+            Min Length is 5
+          </div>
+        </div>
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="text" formControlName="password"></ion-input>
+        </ion-item>
+        <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+          <div [hidden]="!password.errors.required" class="errorTxt">
+            Password is required
+          </div>
+          <div [hidden]="!password.errors.minlength" class="errorTxt">
+            Min Length is 8
+          </div>
+        </div>
+        <ion-button size="block" type="submit" color="success" [disabled]="!loginForm.valid">Submit</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

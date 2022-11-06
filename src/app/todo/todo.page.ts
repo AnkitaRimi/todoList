@@ -12,6 +12,7 @@ export class TodoPage implements OnInit {
   constructor(private todoService:TodoServiceService) { }
 
   ngOnInit() {
+    this.todoService.initPage();
     this.gettodo();
   }
   gettodo(){

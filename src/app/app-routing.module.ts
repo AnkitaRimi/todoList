@@ -15,9 +15,13 @@ const routes: Routes = [
     loadChildren: () => import('./error404/error404.module').then( m => m.Error404PageModule)
   },
   {
+    path: 'log-in',
+    loadChildren: () => import('./auth/log-in/log-in.module').then( m => m.LogInPageModule)
+  },
+  {
     path:'',
     pathMatch:'full',
-    redirectTo:'todo'
+    redirectTo:'log-in'
   },
   {
     path:'**', // wild cart routing

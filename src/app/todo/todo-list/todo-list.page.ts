@@ -17,21 +17,15 @@ export class TodoListPage implements OnInit,OnDestroy {
     this.getTodos()
   }
 
-  public addtodo(){
-    let todo :Todo={'taskName':'Ghurte Jabo','details':'jabo toh obossoi !'}; 
-      this.commonService.addTodo(todo)
-  }
 
   public getTodos() {
    this.getTodo$= this.commonService.getTodoList().subscribe((res: Todo[]) => {
     this.todoList=res;
       console.log("getting Todos", res);
-
     })
   }
   ngOnDestroy(){
     console.log("destroy called");
-    
     if(this.getTodo$){
       this.getTodo$.unsubscribe()
     }
